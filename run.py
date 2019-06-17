@@ -76,7 +76,7 @@ print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 9))
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 10))
 
 #Q1.1 = k = 2 acuracia = 96
-#Q1.2 =
+#Q1.2 = Não. Descartando o último atributo ainda conseguimos manter uma acurácia de 96%. Porém ao descartar duas características a acurácia cai para 72%
 #Q2.1 = Sem normalização acuracia = 68
 #Q2.2 = Com normalização dos dados e k = 1 já chegou a 98
 #Q3.1 = k = 1 sem normalização acuracia chegou a 70, com normalização chegou a 68
