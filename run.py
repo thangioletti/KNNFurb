@@ -10,28 +10,29 @@ def dist(v1, v2):
 	    soma += math.pow(v1[i] - v2[i], 2)
     return math.sqrt(soma)
 
-def meuKnn(dadosTrain, rotuloTrain, dadosTeste, rotuloTeste, k):
+def meuKnn(grupoTrain, trainRots, grupoTest, rotuloTeste, k):
+
     distancia = []
     #Calcula a distancia para todods os pontos de teste e treinamento
-    for i in range(len(dadosTeste)):
+    for i in range(len(grupoTest)):
         distanciaLinha = []
-        for j in range(len(dadosTrain)):
-            distanciaLinha.append([j, dist(dadosTeste[i], dadosTrain[j])])
+        for j in range(len(grupoTrain)):
+            distanciaLinha.append([j, dist(grupoTest[i], grupoTrain[j])])
         distanciaLinha = sorted(distanciaLinha, key=operator.itemgetter(1))
         distancia.append(distanciaLinha)
 
     #Calcula a acuracia
     acuracia = 0
-    for i in range(len(dadosTeste)):
+    for i in range(len(grupoTest)):
         rotulos = []
         for j in range(k):
-            rotulos.append(rotuloTrain[distancia[i][j][0]][0])
+            rotulos.append(trainRots[distancia[i][j][0]][0])
         rotulos = pd.Series(rotulos)
 
-        if rotulos.mode()[0] == rotuloTeste[i][0]:
+        if rotulos.mode()[0] == testRots[i][0]:
             acuracia = acuracia + 1
 
-    acuracia = acuracia/len(dadosTrain)*100
+    acuracia = acuracia/len(grupoTest)*100
     return acuracia
 
 def normalizacao(dadosTrain, dadosTeste):
@@ -62,10 +63,9 @@ testRots   = mat['testRots']
 normalizacao(grupoTrain, grupoTest)
 
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 1))
-print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 2))
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 3))
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 4))
-print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 5))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 6))
 
 #Q1.1 = k = 3, 4, 6 possuem acuracia = 98
 #Q1.2 =
