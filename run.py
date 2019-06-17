@@ -1,3 +1,5 @@
+# Autores: Alex Seródio, Luma Kuhl, Matheus Losi e Tiago Henrique Angioletti
+
 import scipy.io as scipy
 import math
 import numpy as np
@@ -54,7 +56,7 @@ def normalizacao(dadosTrain, dadosTeste):
             dadosTeste[i][j] = round((dadosTeste[i][j]-menor)/(maior-menor),2)
 
 
-mat = scipy.loadmat('grupoDados1.mat')
+mat = scipy.loadmat('grupoDados3.mat')
 grupoTest  = mat['grupoTest']
 grupoTrain = mat['grupoTrain']
 trainRots  = mat['trainRots']
@@ -63,13 +65,19 @@ testRots   = mat['testRots']
 normalizacao(grupoTrain, grupoTest)
 
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 1))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 2))
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 3))
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 4))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 5))
 print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 6))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 7))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 8))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 9))
+print(meuKnn(grupoTrain, trainRots, grupoTest, testRots, 10))
 
-#Q1.1 = k = 3, 4, 6 possuem acuracia = 98
+#Q1.1 = k = 2 acuracia = 96
 #Q1.2 =
-#Q2.1 = 72
-#Q2.2 =
-#Q3.1 =
-#Q3.2 =
+#Q2.1 = Sem normalização acuracia = 68
+#Q2.2 = Com normalização dos dados e k = 1 já chegou a 98
+#Q3.1 = k = 1 sem normalização acuracia chegou a 70, com normalização chegou a 68
+#Q3.2 = k = 9 chegou a 94% de acuracia com os dados normalizados
